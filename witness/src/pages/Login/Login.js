@@ -1,8 +1,7 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
 import { Image, Button, Form, Container, Row, Col } from 'react-bootstrap';
-import axios from 'axios';
-import { loginAction } from '../../actions/loginAction';
+import { loginEmailPassword } from '../../actions/loginAction';
 import { useDispatch } from 'react-redux';
 
 const Login = () => {
@@ -18,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch( loginAction(123444, "Allan Brito"));
+    dispatch( loginEmailPassword(email, password));
   }
 
   return (

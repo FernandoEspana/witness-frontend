@@ -8,7 +8,7 @@ const middleware = [
 ];
 
 const reducers = combineReducers({
-  login: loginReducer
+  loginReducer
 })
 
 export const store = createStore(
