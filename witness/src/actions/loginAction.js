@@ -2,7 +2,7 @@ import axios from 'axios';
 import { types } from '../types/types';
 import  Swal  from 'sweetalert2';
 
-export const loginEmailPassword = (email, password ) => {
+export const loginEmailPassword = (email, password, history ) => {
   return async (dispatch) => {
     try {
       const  { data: witness }  = await axios({
@@ -14,15 +14,14 @@ export const loginEmailPassword = (email, password ) => {
           password,
         }
       });
-      console.log( witness );
+      history.push('/home');
       dispatch(login(witness._id, witness.name)); 
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Fallo de Autenticación',
         text: `${error}`,
-        
-      })
+      });
     }
   }
 }
@@ -35,4 +34,8 @@ export const login = (_id, name) => {
       name
     }
   }
+}
+
+export const logout = () => {
+  return {type: types.logout}
 }

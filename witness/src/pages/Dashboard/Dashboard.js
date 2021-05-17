@@ -1,10 +1,66 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Navigation from '../../components/Navbar/Navigation';
+import { Row, Col, Container, Alert} from 'react-bootstrap';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import PieChart from '../../components/PieChart/PieChart';
 
 const Dashboard = () => {
+
+  const [data, setData] = useState({});
+
+  useEffect(async () => {
+    
+    try {
+      const  { data }  = await axios({
+        method: 'GET',
+        baseURL: 'http://localhost:8000',
+        url: '/pollingStation',
+      });
+      setData(data);
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Fallo de Conexion',
+        text: `${error}`,
+      });
+    }
+    console.log(data)
+  }, []);
+
+    const {
+      percentageCovered,
+      stations,
+      tablesLeft,
+      totalStations,
+      totalTables,
+      totalWitneses,
+    } = data;
   return (
-    <div>
-      <h2>Dashboard Page</h2>
-    </div>
+    <>
+      <Navigation />
+      <Container>
+        <Row>
+          <Col xs={12} md={8}>
+            <h2>Mapa</h2>
+          </Col>
+          <Col className="mt-3" xs={12} md={4}>
+            <Alert variant='primary'>
+              Total puestos de votación: { totalStations }
+            </Alert>
+            <Alert variant='primary'>
+              Total de mesas: { totalTables }
+            </Alert>
+            <Alert variant='success'>
+              Porcentaje cubierto: { percentageCovered } %
+            </Alert>
+            <PieChart 
+              tables={ tablesLeft } 
+              witness={ totalWitneses } style={{ innerWidth:"300px"}} />
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 

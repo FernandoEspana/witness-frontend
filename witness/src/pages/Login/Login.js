@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'; 
 import { useForm } from '../../hooks/useForm';
 import { Image, Button, Form, Container, Row, Col } from 'react-bootstrap';
 import { loginEmailPassword } from '../../actions/loginAction';
@@ -14,10 +15,11 @@ const Login = () => {
   });
 
   const { email, password } = formValues;
+  let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch( loginEmailPassword(email, password));
+    dispatch( loginEmailPassword(email, password, history));
   }
 
   return (
