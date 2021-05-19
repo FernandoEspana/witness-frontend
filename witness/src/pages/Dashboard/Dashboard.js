@@ -4,6 +4,7 @@ import { Row, Col, Container, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import PieChart from '../../components/PieChart/PieChart';
+import Map from '../../components/Map/Map';
 
 const Dashboard = () => {
 
@@ -25,7 +26,7 @@ const Dashboard = () => {
         text: `${error}`,
       });
     }
-    console.log(data)
+      
   }, []);
 
     const {
@@ -36,13 +37,14 @@ const Dashboard = () => {
       totalTables,
       totalWitneses,
     } = data;
+
   return (
     <>
       <Navigation />
       <Container>
         <Row>
-          <Col xs={12} md={8}>
-            <h2>Mapa</h2>
+          <Col className="mt-3" xs={12} md={8}>
+            <Map pollingStations={ stations }/>
           </Col>
           <Col className="mt-3" xs={12} md={4}>
             <Alert variant='primary'>

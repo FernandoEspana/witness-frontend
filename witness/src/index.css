@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.marker-btn {
+  background: none;
+  border: solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.marker-btn img {
+  width: 35px;
+  height: 35px;
+}
