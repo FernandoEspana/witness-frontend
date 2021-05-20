@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import ReactMapGL, { Marker } from 'react-map-gl';

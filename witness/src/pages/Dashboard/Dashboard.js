@@ -10,23 +10,25 @@ const Dashboard = () => {
 
   const [data, setData] = useState({});
 
-  useEffect(async () => {
-    
-    try {
-      const  { data }  = await axios({
-        method: 'GET',
-        baseURL: 'http://localhost:8000',
-        url: '/pollingStation',
-      });
-      setData(data);
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Fallo de Conexion',
-        text: `${error}`,
-      });
+  useEffect(() => {
+    async function fetchData(){
+      try {
+        const  { data }  = await axios({
+          method: 'GET',
+          baseURL: 'http://localhost:8000',
+          url: '/pollingStation',
+        });
+        setData(data);
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Fallo de Conexion',
+          text: `${error}`,
+        });
+      }
     }
-      
+
+    fetchData();
   }, []);
 
     const {
@@ -41,7 +43,7 @@ const Dashboard = () => {
   return (
     <>
       <Navigation />
-      <Container>
+      <Container className="mb-3">
         <Row>
           <Col className="mt-3" xs={12} md={8}>
             <Map pollingStations={ stations }/>
@@ -58,7 +60,9 @@ const Dashboard = () => {
             </Alert>
             <PieChart 
               tables={ tablesLeft } 
-              witness={ totalWitneses } style={{ innerWidth:"300px"}} />
+              witness={ totalWitneses } 
+              style={{ innerWidth:"300px"}} 
+            />
           </Col>
         </Row>
       </Container>

@@ -15,7 +15,7 @@ const PieChart = ({ tables, witness}) => {
             data: [ tables, witness], //valores dinamicos mesas totales, testigos inscritos
             backgroundColor: [
               'rgb(242, 121, 149)',
-              'rgb(18, 232, 132)',
+              'rgb(25, 130, 234)',
             ],
             hoverOffset: 4
           }]
