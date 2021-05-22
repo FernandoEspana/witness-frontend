@@ -3,7 +3,7 @@ import Navigation from '../../components/Navbar/Navigation';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { Container, Row, Col, Alert, Table, Button, AccordionCollapse } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Table, Button } from 'react-bootstrap';
 import PieChart from '../../components/PieChart/PieChart';
 
 const Station = () => {
