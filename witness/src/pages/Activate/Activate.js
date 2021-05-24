@@ -37,6 +37,7 @@ const Activate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.table(formValues);
+  
     try {
       await axios({
         method: 'POST',
