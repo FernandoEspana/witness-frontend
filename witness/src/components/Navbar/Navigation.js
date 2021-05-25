@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../actions/loginAction';
 import NewWitnessModal  from '../NewWitnessModal/NewWitnessModal';
+import NewStationModal from '../NewSationModal/NewStationModal';
 import { useSelector } from 'react-redux';
 
 const Navigation = () => {
@@ -11,13 +12,14 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const { name } = useSelector(state => state.loginReducer);
   const [modalWitnessShow, setModalWitnessShow] = useState(false);
+  const [modalStationShow, setmodalStationShow] = useState(false);
   const handleClick = (whatLinkIs) => {
     switch (whatLinkIs) {
       case 'home':
           history.push('/home');
         break;
       case 'newStation':
-        //TODO: Modal para agregar puesto de votación
+        setmodalStationShow(true);
         break;
       case 'newWitness':
         setModalWitnessShow(true);
@@ -45,6 +47,7 @@ const Navigation = () => {
         </Nav>
       </Navbar>
       <NewWitnessModal show={modalWitnessShow} onHide={()=> setModalWitnessShow(false)}/>
+      <NewStationModal show={modalStationShow} onHide={()=> setmodalStationShow(false)}/>
     </>
   )
 }

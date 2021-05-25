@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import axios from 'axios';
 import { 
@@ -74,7 +74,7 @@ const NewWitnessModal = (props) => {
                   </Form.Group>
                 </Col>
                 <Col>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group controlId="formBasicName">
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control 
                       value={ name }
